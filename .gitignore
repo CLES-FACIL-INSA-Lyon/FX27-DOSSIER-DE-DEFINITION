@@ -1,0 +1,24 @@
+# LaTeX auxiliary / build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nlo
+*.nls
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# PDF output
+*.pdf
+
+# OS / editor
+.DS_Store
+Thumbs.db
