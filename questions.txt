@@ -1,0 +1,17 @@
+can we drop rail buttons
+can we use tail cone
+
+TODO
+add Manufacturing
+
+{Carbon pipe
+
+Fins and tip to tip
+
+Nosecone, transition, tailcone
+
+Structural rings
+
+Rail
+
+Other components}

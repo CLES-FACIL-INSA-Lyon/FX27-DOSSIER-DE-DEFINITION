@@ -1,0 +1,28 @@
+\section{Goals \& Experiments}
+\subsection{Goals}
+The design of the rocket is based on the goals set during its definition. The goals are:
+\begin{enumerate}
+    \item Launch the rocket --- we have not launched a rocket in the past two years, so this is our main priority.
+    \item Make the rocket modular (separate main and motor sections) --- to allow reuse if manufacturing a new rocket is not feasible in future years, or if the team wants to optimize the existing rocket instead.
+    \item Build a base for the EuRoC competition --- we also want to compete in other competitions, so this year we will create a base air-brake mechanism that can be reused in future years.
+    \item Optimize the rocket --- using the knowledge of new members, we aim to optimize the rocket both aerodynamically and structurally, using CFD, FEA, and parametric and topology optimization.
+    \item Optimize and predict the rocket's trajectory --- using an in-house simulator, we want to predict the trajectory as accurately as possible (verified against StabTraj) and stabilize the pitching and rolling dynamics using theoretical models, not only experimental ones (e.g.\ diameter-based static margin).
+    \item \todo{elec goals}
+\end{enumerate}
+
+\subsection{Experiments}
+The following paragraphs describe the main experiments planned for the Iphigénie 60 rocket.
+
+\paragraph{Air brake} is the main experiment. The goal of the air brake is to actively control the rocket's trajectory so that it reaches the desired apogee despite variations in motor performance.
+The desired trajectory depends on the motor assigned to us and on Monte Carlo trajectory simulations. We are currently aiming for an apogee of around 2250\,m with the air brakes deployed.
+
+For the opening and trajectory controllers, we plan to evaluate three methods, from simplest to most complex: PD control, bounding-trajectory blending, and MPC, using our in-house simulator.
+We also plan to implement a Kalman filter for state estimation.
+
+\paragraph{Reaction wheel} is an experiment we have attempted twice over the past three years.
+We already have a certain amount of background knowledge, so this would not be something entirely new.
+The idea is to stabilize the rocket's roll for camera footage.
+
+\paragraph{Telemetry} \todo{elec experiments}
+
+\paragraph{Radar} \todo{yahya}
