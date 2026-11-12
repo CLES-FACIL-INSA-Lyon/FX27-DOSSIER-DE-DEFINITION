@@ -1,16 +1,149 @@
 \section{Mechanical}
 \subsection{Initial design}
-Configuration 
+Our current C'Space design consists of two configurations; the one we use will depend on the motor allocated to us and on our design goal of achieving a longer flight duration. We are still optimizing the rocket's drag and mass, so it is not yet clear which configuration will perform better. The two configurations are shown in figure \ref{fig:2}.
 
-Motors
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Pro75.png}
+        \caption{Pro75 configuration.}
+        \label{fig:2a}
+    \end{subfigure}
+
+    \vspace{0.5\baselineskip}
+
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Pro54.png}
+        \caption{Pro54 configuration.}
+        \label{fig:2b}
+    \end{subfigure}
+    \caption{The two rocket configurations under consideration.}
+    \label{fig:2}
+\end{figure}
+
+Both configurations share a similar front part (main pipe) but differ in their motor pipes.
+From the nosecone back, the main pipe houses the parachute bay, the reaction wheel, the air brake, and the electronics bay.
+One of our goals was to make the rocket modular, which is illustrated here by its ability to accept different motor pipes.
+The coupling between the main and motor pipes will use the same interface for both the constant-diameter and the reducing-diameter (transition) configurations.
+The motors will seat flush with the motor pipe.
+However, this is less relevant for C'Space, since we will commit to one of the two configurations once the motor allocation is confirmed.
+
+The overall dimensions of the rocket are summarized in table \ref{tab:pipes}, listing the outer diameter and length of each pipe section, as well as the cumulative configuration length measured from the top of the rocket to the end of that pipe.
+
+\begin{table}[ht]
+    \centering
+    \caption{Dimensions of the rocket's pipe sections.}
+    \label{tab:pipes}
+    \begin{tabular}{lccc}
+        \hline
+        Pipe & Outer diameter [mm] & Length [mm] & Configuration length [mm] \\
+        \hline
+        Main pipe & 80 & 850 & - \\
+        Motor pipe (Pro75) & 80 & 534 & 1742 \\
+        Motor pipe (Pro54) & 59 & 486 & 1643 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+The current design goal is to maximize flight duration: keeping the air brake deployed for longer gives the controller more time to add drag and bleed off excess energy, allowing the rocket to hit its target apogee more precisely instead of overshooting.
+Current data shows that the Pro75 configuration has 5\,s more flight time than the Pro54 configuration; we would therefore request motors in the following order of preference:
+\begin{enumerate}
+    \item Pro75-3G Green
+    \item Pro54-5G Classic
+    \item Pro54-5G Green (our least preferred option, as it would give a short flight)
+\end{enumerate}
+
+The current flight-data estimates are shown in table \ref{tab:1} and figure \ref{fig:3}; everything will be verified with StabTraj.
+
+These are the results of some initial simulations. We know the maximum apogee allowed for this competition is 3000\,m, so we will further tune the rocket's mass and drag to bring the configurations within that range.
+For the idealized configurations, the reported apogee corresponds to the estimated value when only the mass or only the drag is varied from its nominal configuration, in order to isolate the effect of each parameter.
+
+The stability of these configurations has not yet been analyzed: the values used so far were chosen arbitrarily, only to give a workable stability margin. Static and dynamic stability analyses are planned in the near future, and everything will be verified with StabTraj.
+
+\begin{table}[ht]
+    \centering
+    \caption{Preliminary flight-data estimates for the six configurations.}
+    \label{tab:1}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{lcccccccc}
+        \hline
+        Configuration & $m_{dry}$ [kg] & $m_{wet}$ [kg] & apogee [m] & $t_{apo}$ [s] & $v_{max}$ [m/s] & $a_{max}$ [m/s\textsuperscript{2}] & $M_{max}$ & $v_{rail}$ [m/s] \\
+        \hline
+        Pro54 (current) & 6.530 & 7.520 & 2460.2 & 22.12 & 242.6 & 109.2 & 0.72 & 32.5 \\
+        Pro75 (current) & 7.905 & 9.977 & 3731.6 & 27.74 & 304.1 & 71.6 & 0.91 & 24.2 \\
+        Pro54 (ideal mass) & 5.079 & 6.069 & 3000.0 & 23.32 & 301.0 & 137.7 & 0.89 & 36.6 \\
+        Pro54 (ideal drag) & 6.530 & 7.520 & 2999.9 & 25.04 & 251.8 & 109.2 & 0.75 & 32.5 \\
+        Pro75 (ideal mass) & 9.800 & 11.872 & 3000.0 & 25.85 & 250.1 & 58.3 & 0.74 & 21.9 \\
+        Pro75 (ideal drag) & 7.905 & 9.977 & 3000.1 & 24.31 & 286.9 & 69.8 & 0.85 & 24.2 \\
+        \hline
+    \end{tabular}
+    \end{adjustbox}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        %\includegraphics[width=\textwidth]{}
+        \caption{Altitude vs.\ time.}
+        \label{fig:3a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        %\includegraphics[width=\textwidth]{}
+        \caption{Velocity vs.\ time.}
+        \label{fig:3b}
+    \end{subfigure}
+    \caption{Simulated flight profiles for the two configurations.}
+    \label{fig:3}
+\end{figure}
+\todo{add altitude/velocity plots and confirm subfigure captions for figure \ref{fig:3} once StabTraj simulations are ready}
 
 \subsection{Systems}
+Our project is organized into different systems based on the area of the rocket being worked on.
 \subsubsection{Air frame}
-\subsubsection{Air brake}
+The air frame team's goal is to design the outer surface of the rocket.
+This team is split into three sub-teams: aerodynamics, stability, and structural.
+
+The aerodynamics sub-team's goal is to create and optimize surfaces, and to extract drag, lift, and pitching-moment data.
+Part of their current work is shown in subfigure \ref{fig:airframe-aero}.
+
+The stability sub-team derives the analytical models for drag and lift (as functions of Mach number and angle of attack), and derives and evaluates the rocket's stability using these coefficients.
+
+The structural sub-team's goal is to define and optimize the dimensions and features of the solid parts using FEA.
+Their work is shown in subfigure \ref{fig:airframe-structural}.
+
+The list of structural components is: nosecone, main pipe, transition, motor pipe, tailcone, fins, and rail button.
+
+This year we want to manufacture a detachable rail guide to minimize aerodynamic imbalance; an example can be seen in this video. % https://youtu.be/LnunMEopsb8?t=83
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        %\includegraphics[width=\textwidth]{}
+        \caption{Surface assembly.}
+        \label{fig:airframe-aero}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        %\includegraphics[width=\textwidth]{}
+        \caption{Solid assembly.}
+        \label{fig:airframe-structural}
+    \end{subfigure}
+    \caption{Current air frame design work.}
+    \label{fig:airframe}
+\end{figure}
+
+\subsubsection{Air brake} \label{sec:sys-airbrake}
 The air brake team is currently in the design stage.
 Based on reports from other projects, we have selected and adapted one of the existing air-brake extension mechanisms, shown in figure \ref{fig:airbrake-mechanism}.
 
-The team is organized into eight parts: design (CAD), drivetrain mechanics (motor and gear sizing), air-brake mechanics (aerodynamic and friction force evaluation), structural, aerodynamics (CFD), opening-controller design, and trajectory-controller design.
+The team is organized into eight parts: design (CAD), drivetrain mechanics (motor and gear sizing), air-brake mechanics (aerodynamic and friction force evaluation), structural (FEA), aerodynamics (CFD), opening-controller design, and trajectory-controller design.
 
 \begin{figure}[ht]
     %\includegraphics{}
@@ -18,10 +151,39 @@ The team is organized into eight parts: design (CAD), drivetrain mechanics (moto
     \label{fig:airbrake-mechanism}
 \end{figure}
 
-\todo{specify design constraint --- "current design is within the \_\_\_"}
+The desired trajectory depends on the motor assigned to us and on Monte Carlo trajectory simulations. We are currently aiming for an apogee of around 2250\,m with the air brakes deployed.
+
+For the opening and trajectory controllers, we plan to evaluate three methods, from simplest to most complex: PD control, bounding-trajectory blending, and MPC, using our in-house simulator.
+We also plan to implement a Kalman filter for state estimation.
+
 \subsubsection{Structural}
+The structural team deals with every structural component that the air frame team does not work on.
 
+The team's goal is to derive the free-body diagram of each component, work out the magnitude and direction of the reaction and applied forces, use FEA to find the minimum mass for each loading configuration, and use topology optimization to further reduce the mass.
+
+The list of structures involved is: bulkhead, transition rings and coupler, parachute bay, electronics bay, reaction-wheel plates, and guide rail.
+
+As part of the structural team's work, we plan to develop a reusable inner guide system that lets us slide components in and out, since the rocket's small diameter makes it difficult to work by hand and align parts with screws.
+
+\subsubsection{Reaction wheel} \label{sec:sys-reaction-wheel}
+This is an experiment we have attempted twice over the past three years.
+We already have a certain amount of background knowledge, so this would not be something entirely new.
+
+The team is split into: reaction-wheel design, equations of motion, and controller design.
+
+\subsubsection{Parachute opening mechanism}
+This year we are choosing between a conventional design, a sliding door, and nosecone parachute ejection.
+
+The parachute team is split into: door-opening mechanism, parachute ejection mechanism, and parachute bay design.
+
+\subsection{Manufacturing}
+The pipes will be manufactured from carbon fiber, and the nosecone, transition, and tailcone from glass fiber.
+The fins are going to be manufactured using carbon fiber and reinforced with a tip-to-tip layup.
+
+The air brake, structural, reaction wheel, and parachute opening mechanism components are going to be manufactured by machining aluminium plates and X2C material from one of our sponsors.
+
+Majority of parts will be tested prior with 3D printing and assembled on PVC pipe.
 \subsection{Tests}
-FEA + structural
-
-CFD
+The tests are performed to verify the results obtained from tools such as FEA and CFD.
+For structural, we are planning on testing against the C'Space rules using our own test rings, and we are also planning on doing our own tests (with the university) to verify the models. This includes testing the structure's natural frequencies using a shaker provided by the LaMCoS laboratory.
+For CFD, we have contact with the wind tunnel, where we will verify the rocket's and air brake's performance.

@@ -13,16 +13,32 @@ The design of the rocket is based on the goals set during its definition. The go
 \subsection{Experiments}
 The following paragraphs describe the main experiments planned for the Iphigénie 60 rocket.
 
-\paragraph{Air brake} is the main experiment. The goal of the air brake is to actively control the rocket's trajectory so that it reaches the desired apogee despite variations in motor performance.
-The desired trajectory depends on the motor assigned to us and on Monte Carlo trajectory simulations. We are currently aiming for an apogee of around 2250\,m with the air brakes deployed.
+\paragraph{Air brake} is the main experiment. The current design status and controller approach are detailed in section \ref{sec:sys-airbrake}.
+\begin{itemize}
+    \item \textit{Goal:} characterize and validate the air brake's ability to control the rocket's drag so that it reaches a target apogee $h_{\textrm{target}}$, given that the motor's thrust is sized to overshoot $h_{\textrm{target}}$ by default.
+    \item \textit{Parameters to study:} additional drag force (or drag coefficient) produced by the air brake as a function of deployment angle, the resulting apogee, and the vertical velocity/acceleration profile during the braking phase.
+    \item \textit{Measurement range and precision:} \todo{}
+    \item \textit{Hypothesis:} without the air brake, the motor drives the rocket to overshoot $h_{\textrm{target}}$; by extending drag flaps during ascent, the air brake can bleed off the excess energy and bring the achieved apogee down to $h_{\textrm{target}}$.
+    \item \textit{Expected outcome:} the achieved apogee lands within a few percent of $h_{\textrm{target}}$, markedly closer than the uncontrolled (brakeless) apogee predicted in table \ref{tab:1}.
+\end{itemize}
 
-For the opening and trajectory controllers, we plan to evaluate three methods, from simplest to most complex: PD control, bounding-trajectory blending, and MPC, using our in-house simulator.
-We also plan to implement a Kalman filter for state estimation.
-
-\paragraph{Reaction wheel} is an experiment we have attempted twice over the past three years.
-We already have a certain amount of background knowledge, so this would not be something entirely new.
-The idea is to stabilize the rocket's roll for camera footage.
+\paragraph{Reaction wheel} experiment. Background on our previous attempts is given in section \ref{sec:sys-reaction-wheel}.
+\begin{itemize}
+    \item \textit{Goal:} analyze whether a motor-driven reaction wheel can control the rocket's roll rate in flight, counteracting roll induced by fin misalignment and roll--pitch coupling.
+    \item \textit{Parameters to study:} roll rate over time, reaction-wheel motor torque/current, and the coupling between roll rate and pitch rate.
+    \item \textit{Measurement range and precision:} \todo{}
+    \item \textit{Hypothesis:} a motor-driven reaction wheel can actively damp the rocket's roll rate independently of fin-induced torque, keeping it near zero during the camera-recording phase of flight despite roll--pitch coupling.
+    \item \textit{Expected outcome:} the roll rate measured with the reaction wheel active is substantially lower than in our previous (uncontrolled) attempts, giving steadier camera footage.
+\end{itemize}
 
 \paragraph{Telemetry} \todo{elec experiments}
 
 \paragraph{Radar} \todo{yahya}
+
+\subsection{Timeline}
+The project is planned according to the following milestones:
+\begin{itemize}
+    \item Design finished --- end of December.
+    \item Optimizations finished --- mid-January.
+    \item Manufacturing finished --- end of February.
+\end{itemize}

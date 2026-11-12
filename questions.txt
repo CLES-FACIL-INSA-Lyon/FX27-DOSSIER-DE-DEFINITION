@@ -1,5 +1,9 @@
-can we drop rail buttons
-can we use tail cone
+%tailcone
+%rail button
+if we get pro75 allocation, can we ask for pro54 if we change our configuration?
+rail size
+should we put any margin
+if we go transonic
 
 TODO
 add Manufacturing
